@@ -1,0 +1,82 @@
+/* Numbers */
+.numbers{
+    text-align: center;
+    color: white;
+}
+/* Inputs */
+@media (max-width: 720px) {
+	.input{
+        text-align: right;
+        width: 85%;
+        margin-left: 8%;
+        border-style:inset;
+        line-height: 30px;
+        font-size: 20px;
+    }
+    .displays{
+        text-align: right;
+        width: 85%;
+        margin-left: 8%;
+    }
+    button{
+        background-color: #272f38;
+        color: white;
+        font-family: 'Hind', helvetica;
+        font-size: 10px;
+        border-style: inset;
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+    .row {
+        line-height: 55px;
+        margin: 0, auto;
+    }
+}
+
+.input{
+    text-align: right;
+    width: 85%;
+    margin: 0, auto;
+    border-style:inset;
+    font-size: 20px;
+    color: white;
+    opacity: 100%;
+}
+.displays{
+    text-align: right;
+    width: 85%;
+    margin: 0, auto;
+    font-size: 20px;
+    color: white;
+}
+.dis1{
+    opacity: 60%;
+}
+.dis2{
+    opacity: 50%;
+}
+.dis3{
+    opacity: 40%;
+}
+.dis4{
+    opacity: 30%;
+}
+/* buttons */
+button{
+    background-color: #272f38;
+    color: white;
+    font-family: 'Hind', helvetica;
+    font-size: 30px;
+    border-style: inset;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+button:hover {
+    background-color: white; /* Green */
+    color: #272f38;
+    border-style: inset;
+    border-width: 5px;
+}
+button {
+    transition-duration: 0.4s;
+  }
