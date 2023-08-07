@@ -80,3 +80,11 @@ button:hover {
 button {
     transition-duration: 0.4s;
   }
+
+button:active {
+background-color: #272f38;
+color: white;
+box-shadow: 0 5px #666;
+transform: translateY(4px);
+}
+
