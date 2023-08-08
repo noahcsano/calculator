@@ -10,7 +10,6 @@ body {
 	font-size: 20px;
 	color: #797878;
 	background: #272f38;
-	line-height: 20px;
 	letter-spacing: 0em;
 	font-weight: 300;
 	
@@ -79,10 +78,24 @@ body {
 }
 
 /* 2. Container */
+@media (max-width: 720px) {
+	.container {
+		width: 100% !important;
+		text-align: center;
+		margin: auto;
+	}
+	.row {
+		line-height: 20px !important;
+	}
+	h3 {
+		margin-top: 18px !important; 
+		margin-bottom: 18px !important; 
+	}
+}
 .container {
-	width: 100%;
+	width: 70%;
 	text-align: center;
-	margin-top: 10%;
+	margin: auto;
 }
 
 .fw {
@@ -90,6 +103,7 @@ body {
 	position: relative;
 	min-width: 1020px;
 }
+
 
 @media (max-width: 1080px) {
 	.fw {

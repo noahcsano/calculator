@@ -5,18 +5,6 @@
 }
 /* Inputs */
 @media (max-width: 720px) {
-    
-	.input{
-        text-align: right;
-        width: 90% !important;
-        border-style:inset;
-        line-height: 45px;
-        font-size: 20px;
-    }
-    .displays{
-        text-align: right;
-        width: 85%;
-    }
     button{
         background-color:rgba(37, 37, 37, 0.521); ;
         color: white;
@@ -36,39 +24,36 @@
     .Enter {
         width: 95% !important;
     }
+    button{
+        font-size: 26px !important;
+        padding-right: 15px !important;
+        padding-left: 15px !important;  
+    }
+    #buttonClicked{
+        transform: translateY(1px) !important;
+        border-width: 1px !important;
+    
+    }
 }
-
 .input{
-    text-align: right;
+    height: 50px;
+}
+#display {
+    background-color: rgba(255, 255, 255, 0.521);
     width:  85%;
-    margin-top: 23.4px;
-    margin-bottom: 23.4px;
     margin-left: auto;
     margin-right: auto;
-    border-style:inset;
-    font-size: 20px;
-    color: white;
-    opacity: 100%;
-    background-color: rgba(37, 37, 37, 0.521);
-    padding-right: 10px;
-}
-.displays{
     text-align: right;
-    width: 85%;
     font-size: 20px;
-    color: white;
+    color: rgb(0, 0, 0);
+    padding-right: 20px ;
 }
-.dis1{
-    opacity: 60%;
+.olds{
+    font-size: 20px;
+    opacity: 70%;
 }
-.dis2{
-    opacity: 50%;
-}
-.dis3{
-    opacity: 40%;
-}
-.dis4{
-    opacity: 30%;
+.curr{
+    font-size: 35px;
 }
 /* buttons */
 button{

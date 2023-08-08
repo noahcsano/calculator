@@ -30,22 +30,28 @@
     <div class="container">
         <div class = "fw"> 
             <div class = "row">
+                <div id = "display" class="row" style="height: 300px;">
+                    <div class="input nbtn col col-m-12 col-t-12 col-d-12">
+                        <h3 id = "last_display5" class = "input olds" style="margin: 0; opacity: 35%;">last_display5</h3>
+                    </div>
+                    <div class="input nbtn col col-m-12 col-t-12 col-d-12">
+                        <h3 id = "last_display4" class = "input olds" style="margin: 0; opacity: 40%;">last_display4</h3>
+                    </div>
+                    <div class="input nbtn col col-m-12 col-t-12 col-d-12">
+                        <h3 id = "last_display3" class = "input olds" style="margin: 0; opacity: 50%;">last_display3</h3>
+                    </div>
+                    <div class="input nbtn col col-m-12 col-t-12 col-d-12">
+                        <h3 id = "last_display2" class = "input olds" style="margin: 0; opacity: 60%;">last_display2</h3>
+                    </div>
+                    <div class="input nbtn col col-m-12 col-t-12 col-d-12">
+                        <h3 id = "last_display1" class = "input olds" style="margin: 0; opacity: 70%;">last_display1</h3>
+                    </div>
+                    <div class="input nbtn col col-m-12 col-t-12 col-d-12">
+                        <h3 id = "curr_dis" class = "input curr" style="margin: 0;">Start</h3>
+                    </div>
+                </div>
                 <div class="col col-m-12 col-t-6 col-d-6">
                     <div class = "numbers">
-                        <div class = "row">
-                            <div class="nbtn col col-m-3 col-t-3 col-d-3">
-                                <h3><button onclick = "cleare()" class="Escape">AC</button></h3>
-                            </div>
-                            <div class="nbtn col col-m-3 col-t-3 col-d-3">
-                                <h3><button onclick = "change_sign()"class="+/-">+/-</button></h3>
-                            </div>
-                            <div class="nbtn col col-m-3 col-t-3 col-d-3">
-                                <h3><button onclick = "convert_to_percent()" class="%">%</button></h3>
-                            </div>
-                            <div class="end nbtn col col-m-3 col-t-3 col-d-3">
-                                <h3><button onclick = "OP('/')" class="/">/</button></h3>
-                            </div>
-                        </div>
                         <div class = "row">
                             <div class="nbtn col col-m-3 col-t-3 col-d-3">
                                 <h3><button onclick = "add_to_display(1)" class="1">1</button></h3>
@@ -103,9 +109,18 @@
                     </div>
                 </div>
                 <div class="col col-m-12 col-t-6 col-d-6">
-                    <div class="row">
-                        <div class="nbtn col col-m-12 col-t-12 col-d-12">
-                            <h3 id = "curr_dis" class = "input">Start</h3>
+                    <div class = "row">
+                        <div class="nbtn col col-m-3 col-t-3 col-d-3">
+                            <h3><button onclick = "cleare()" class="Escape">AC</button></h3>
+                        </div>
+                        <div class="nbtn col col-m-3 col-t-3 col-d-3">
+                            <h3><button onclick = "change_sign()"class="+/-">+/-</button></h3>
+                        </div>
+                        <div class="nbtn col col-m-3 col-t-3 col-d-3">
+                            <h3><button onclick = "convert_to_percent()" class="%">%</button></h3>
+                        </div>
+                        <div class="end nbtn col col-m-3 col-t-3 col-d-3">
+                            <h3><button onclick = "OP('/')" class="/">/</button></h3>
                         </div>
                     </div>
                     <div class = "row">
@@ -137,22 +152,11 @@
                         </div>
                     </div>
                     <div class = "row">
-                        <div class="nbtn col col-m-4 col-t-4 col-d-4">
-                            <h3><button onclick = "incomplete('sin')" id = "buttonIncomplete">sin</button></h3>
+                        <div class="end nbtn col col-m-6 col-t-6 col-d-6">
+                            <h3 style="margin-left: 0px;"><button onclick = "Delete('Backspace')" class="Backspace" style="font-size: 28px;">backspace</button></h3>
                         </div>
-                        <div class="nbtn col col-m-4 col-t-4 col-d-4">
-                            <h3><button onclick = "incomplete('cos')" id = "buttonIncomplete">cos</button></h3>
-                        </div>
-                        <div class="nbtn col col-m-4 col-t-4 col-d-4">
-                            <h3><button onclick = "incomplete('tan')" id = "buttonIncomplete">tan</button></h3>
-                        </div>
-                    </div>
-                    <div class = "row">
                         <div class="end nbtn col col-m-6 col-t-6 col-d-6">
                             <h3><button onclick = "incomplete('rand')" id = "buttonIncomplete" style="font-size: 28px;">ran</button></h3>
-                        </div>
-                        <div class="end nbtn col col-m-6 col-t-6 col-d-6">
-                            <h3 style="margin-right: 50px;"><button onclick = "Delete('Backspace')" class="Backspace" style="font-size: 28px;">backspace</button></h3>
                         </div>
                     </div>
                     
