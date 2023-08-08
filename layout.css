@@ -86,7 +86,7 @@ body {
 }
 
 .fw {
-	margin: 0;
+
 	position: relative;
 	min-width: 1020px;
 }
@@ -99,8 +99,7 @@ body {
 }
 /* 3. Columns */
 .row {
-	line-height: 50px;
-	margin: 0, auto;
+	line-height: 55px;
 }
 
 

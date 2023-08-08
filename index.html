@@ -34,71 +34,70 @@
                     <div class = "numbers">
                         <div class = "row">
                             <div class="nbtn col col-m-3 col-t-3 col-d-3">
-                                <h3><button onclick = "cleare()">AC</button></h3>
+                                <h3><button onclick = "cleare()" class="Escape">AC</button></h3>
                             </div>
                             <div class="nbtn col col-m-3 col-t-3 col-d-3">
-                                <h3><button onclick = "change_sign()">+/-</button></h3>
+                                <h3><button onclick = "change_sign()"class="+/-">+/-</button></h3>
                             </div>
                             <div class="nbtn col col-m-3 col-t-3 col-d-3">
-                                <h3><button onclick = "convert_to_percent()">%</button></h3>
+                                <h3><button onclick = "convert_to_percent()" class="%">%</button></h3>
                             </div>
                             <div class="end nbtn col col-m-3 col-t-3 col-d-3">
-                                <h3><button onclick = "OP('div')">/</button></h3>
+                                <h3><button onclick = "OP('/')" class="/">/</button></h3>
                             </div>
                         </div>
                         <div class = "row">
                             <div class="nbtn col col-m-3 col-t-3 col-d-3">
-                                <h3><button onclick = "add_to_display(1)">1</button></h3>
+                                <h3><button onclick = "add_to_display(1)" class="1">1</button></h3>
                             </div>
                             <div class="nbtn col col-m-3 col-t-3 col-d-3">
-                                <h3><button onclick = "add_to_display(2)">2</button></h3>
+                                <h3><button onclick = "add_to_display(2)" class="2">2</button></h3>
                             </div>
                             <div class="nbtn col col-m-3 col-t-3 col-d-3">
-                                <h3><button onclick = "add_to_display(3)">3</button></h3>
+                                <h3><button onclick = "add_to_display(3)" class="3">3</button></h3>
                             </div>
                             <div class="end nbtn col col-m-3 col-t-3 col-d-3">
-                                <h3><button onclick = "OP('mul')">*</button></h3>
+                                <h3><button onclick = "OP('*')" class="*">*</button></h3>
                             </div>
                         </div>
                         <div class = "row">
                             <div class="nbtn col col-m-3 col-t-3 col-d-3">
-                                <h3><button onclick = "add_to_display(4)">4</button></h3>
+                                <h3><button onclick = "add_to_display(4)" class="4">4</button></h3>
                             </div>
                             <div class="nbtn col col-m-3 col-t-3 col-d-3">
-                                <h3><button onclick = "add_to_display(5)">5</button></h3>
+                                <h3><button onclick = "add_to_display(5)" class="5">5</button></h3>
                             </div>
                             <div class="nbtn col col-m-3 col-t-3 col-d-3">
-                                <h3><button onclick = "add_to_display(6)">6</button></h3>
+                                <h3><button onclick = "add_to_display(6)" class="6">6</button></h3>
                             </div>
                             <div class="end nbtn col col-m-3 col-t-3 col-d-3">
-                                <h3><button onclick = "OP('sub')">-</button></h3>
+                                <h3><button onclick = "OP('-')" class="-">-</button></h3>
                             </div>
                         </div>
                         <div class = "row">
                             <div class="nbtn col col-m-3 col-t-3 col-d-3">
-                                <h3><button onclick = "add_to_display(7)">7</button></h3>
+                                <h3><button onclick = "add_to_display(7)" class="7">7</button></h3>
                             </div>
                             <div class="nbtn col col-m-3 col-t-3 col-d-3">
-                                <h3><button onclick = "add_to_display(8)">8</button></h3>
+                                <h3><button onclick = "add_to_display(8)" class="8">8</button></h3>
                             </div>
                             <div class="nbtn col col-m-3 col-t-3 col-d-3">
-                                <h3><button onclick = "add_to_display(9)">9</button></h3>
+                                <h3><button onclick = "add_to_display(9)" class="9">9</button></h3>
                             </div>
                             <div class="end nbtn col col-m-3 col-t-3 col-d-3">
-                                <h3><button onclick = "OP('add')">+</button></h3>
+                                <h3><button onclick = "OP('+')" class="+">+</button></h3>
                             </div>
                         </div>
                         <div class = "row">
                             <div class="nbtn col col-m-3 col-t-3 col-d-3" >
-                                <h3><button onclick = "add_to_display(0)">0</button></h3>
+                                <h3><button onclick = "add_to_display(0)" class="0">0</button></h3>
                             </div>
                             <div class="nbtn col col-m-3 col-t-3 col-d-3">
-                                <h3><button onclick = "decimal()">.</button></h3>
+                                <h3><button onclick = "decimal()" class=".">.</button></h3>
                             </div>
-                            <div class="nbtn col col-m-3 col-t-3 col-d-3">
-                            </div>
-                            <div class="nbtn col col-m-3 col-t-3 col-d-3">
-                                <h3><button onclick = "calculate()">=</button></h3>
+                           
+                            <div class="nbtn col col-m-6 col-t-6 col-d-6">
+                                <h3 class = h3Enter><button onclick = "calculate()" style="padding-right: 55px; padding-left: 60px" class="= Enter">Enter</button></h3>
                             </div>
                         </div>
                     </div>
@@ -109,24 +108,51 @@
                             <h3 id = "curr_dis" class = "input">Start</h3>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="nbtn col col-m-12 col-t-12 col-d-12">
-                            <h3 class="displays dis1">display</h3>
+                    <div class = "row">
+                        <div class="nbtn col col-m-3 col-t-3 col-d-3">
+                            <h3><button onclick = "incomplete('√')" id = "buttonIncomplete">√</button></h3>
+                        </div>
+                        <div class="nbtn col col-m-3 col-t-3 col-d-3">
+                            <h3><button onclick = "incomplete('ln')" id = "buttonIncomplete">ln</button></h3>
+                        </div>
+                        <div class="nbtn col col-m-3 col-t-3 col-d-3">
+                            <h3><button onclick = "incomplete('e')" id = "buttonIncomplete">e</button></h3>
+                        </div>
+                        <div class="end nbtn col col-m-3 col-t-3 col-d-3">
+                            <h3><button onclick = "incomplete('x²')" id = "buttonIncomplete">x²</button></h3>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="nbtn col col-m-12 col-t-12 col-d-12">
-                            <h3 class="displays dis2">display</h3>
+                    <div class = "row">
+                        <div class="nbtn col col-m-3 col-t-3 col-d-3">
+                            <h3><button onclick = "incomplete('(')" id = "buttonIncomplete">(</button></h3>
+                        </div>
+                        <div class="nbtn col col-m-3 col-t-3 col-d-3">
+                            <h3><button onclick = "incomplete(')')" id = "buttonIncomplete">)</button></h3>
+                        </div>
+                        <div class="nbtn col col-m-3 col-t-3 col-d-3">
+                            <h3><button onclick = "incomplete('π')" id = "buttonIncomplete">π</button></h3>
+                        </div>
+                        <div class="end nbtn col col-m-3 col-t-3 col-d-3">
+                            <h3><button onclick = "incomplete('log')" id = "buttonIncomplete">log</button></h3>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="nbtn col col-m-12 col-t-12 col-d-12">
-                            <h3 class="displays dis3">display</h3>
+                    <div class = "row">
+                        <div class="nbtn col col-m-4 col-t-4 col-d-4">
+                            <h3><button onclick = "incomplete('sin')" id = "buttonIncomplete">sin</button></h3>
+                        </div>
+                        <div class="nbtn col col-m-4 col-t-4 col-d-4">
+                            <h3><button onclick = "incomplete('cos')" id = "buttonIncomplete">cos</button></h3>
+                        </div>
+                        <div class="nbtn col col-m-4 col-t-4 col-d-4">
+                            <h3><button onclick = "incomplete('tan')" id = "buttonIncomplete">tan</button></h3>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="nbtn col col-m-12 col-t-12 col-d-12">
-                            <h3 class="displays dis4">display</h3>
+                    <div class = "row">
+                        <div class="end nbtn col col-m-6 col-t-6 col-d-6">
+                            <h3><button onclick = "incomplete('rand')" id = "buttonIncomplete" style="font-size: 28px;">ran</button></h3>
+                        </div>
+                        <div class="end nbtn col col-m-6 col-t-6 col-d-6">
+                            <h3 style="margin-right: 50px;"><button onclick = "Delete('Backspace')" class="Backspace" style="font-size: 28px;">backspace</button></h3>
                         </div>
                     </div>
                     
@@ -136,7 +162,8 @@
     </div>
     <script src = "jquery.min.js"></script>
     <script src = "jquery.validate.js"></script>
+    <script src="keys.js"></script>
     <script src="calc.js"></script>
-
+    
 </body>
 </html>

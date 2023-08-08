@@ -24,7 +24,7 @@ class Active {
 	  this.oppActive = false;
 	  this.operation = null;
 	  this.nextVal = undefined;
-	  this.finishCalc = false;
+	  this.lastKey = null; //For reading keyboard inputs
 	}
   }
 
@@ -35,21 +35,24 @@ function change_sign() {
 	if (curr_value == "0" || curr_value == "Start") {
 		return;
 	}
-	else if (current.sign == "+") {
+	if (current.lastKey != undefined) {
+		document.getElementsByClassName(current.lastKey)[0].removeAttribute("id", "buttonClicked");
+	}
+	if (current.sign == "+") {
 		current.sign = "-";
 		curr_display.textContent = "-" + curr_value;
 		if (current.nextVal != undefined) {
-			current.nextVal = "-" + curr_value;
+			current.nextVal = "-" + current.nextVal;
 		}
-		
 	}else{
 		current.sign = "+";
 		curr_display.textContent = curr_value.slice(1);
 		if (current.nextVal != undefined) {
-			current.nextVal = curr_value.slice(1);
+			current.nextVal = current.nextVal.slice(1);
 		}
-		
 	}
+	current.lastKey = "+/-";
+	document.getElementsByClassName("+/-")[0].setAttribute("id", "buttonClicked");
 };
 //AC Case 
 function cleare() {
@@ -57,33 +60,56 @@ function cleare() {
 	var curr_value = curr_display.textContent;
 	if (curr_value === 'Start') {
 		return;
-	} else if (current.cleared == true) {
+	}
+	if (current.lastKey != undefined) {
+		document.getElementsByClassName(current.lastKey)[0].removeAttribute("id", "buttonClicked");
+	}
+	if (current.cleared == true) {  //Next is going to be second clear
 		current = class Active {}
 		curr_display.textContent = 'Start';
-	} else {
+	} else { //First Clear. Save values
 		current.cleared = true;
 		curr_display.textContent = '0';
+		current.nextVal = 0;
 	}
 	current.display_length = 0;
 	current.sign = "+";
+
+	current.lastKey = "Escape";
+	document.getElementsByClassName("Escape")[0].setAttribute("id", "buttonClicked");
 };
 // Adding Values to  Display
 function add_to_display(i) {
 	var curr_display = document.getElementById("curr_dis");
 	var curr_value = curr_display.textContent;
+	i = i.toString();
+	if (curr_value.includes(".") && i == ".") {
+		return;
+	}
+	if (current.lastKey != undefined) {
+        document.getElementsByClassName(current.lastKey)[0].removeAttribute("id", "buttonClicked");
+    }
 	if (current.oppActive === true) { //If user clicked an operation before this, we need to store the upcoming value in NextVal so that we can add it later
-		i = i.toString();
-		if (current.nextVal == undefined) { //If this is the first digit 
+		if (current.cleared == true) { //Case for 0 or beginning of calculation
 			curr_display.textContent = i;
+			current.nextVal = i;
 			current.cleared = false;
+			current.sign = "+";
+			current.display_length = 1
+		} else if (current.nextVal == undefined) { //If this is the first digit 
+			curr_display.textContent = i;
 			current.nextVal = i;
 			current.sign = "+";
-		} else{ //Else
+			current.display_length = 1
+		} else if (current.display_length > 18) { //Length is too long
+			alert('Too Large!');
+		}
+		else{ //Else
 			curr_display.textContent = curr_value + i; 
 			current.nextVal += i;
+			current.display_length += 1
 		}
-		return;
-	} else if (current.display_length >  18) { //Length is too long
+	} else if (current.display_length > 18) { //Length is too long
 		alert('Too Large!');
 	} else if (curr_value === 'Start' || curr_value === "0") { //Case for 0 or beginning of calculation
 		curr_display.textContent = i;
@@ -95,49 +121,56 @@ function add_to_display(i) {
 		curr_display.textContent = concat;
 		current.display_length += 1;
 	} 
-	current.oppActive = false;
+	current.lastKey = i;
+	document.getElementsByClassName(i)[0].setAttribute("id", "buttonClicked");
 };
 function finishCalc() { //Next Val == the currently displayed final value. We need to add this to our current total, before doing more operations
-
-	if (current.operation == "add") {
-		operation(current.nextVal, "add");
-	} else if (current.operation == "sub") {
-		operation(current.nextVal, "sub");
-	} else if (current.operation == "mul") {
-		operation(current.nextVal, "mul");
-	} else if (current.operation == "div") {
-		operation(current.nextVal, "div");
+	if (current.operation == "+") {
+		operation(current.nextVal, "+");
+	} else if (current.operation == "-") {
+		operation(current.nextVal, "-");
+	} else if (current.operation == "*") {
+		operation(current.nextVal, "*");
+	} else if (current.operation == "/") {
+		operation(current.nextVal, "/");
 	}
 	document.getElementById("curr_dis").textContent = current.total;
-	current.finishCalc = false; //reset
 	current.nextVal = undefined; //reset
-}
+};
 
 //Operations
 function OP(type) { //Initial Function Called when operation buttons are pressed. Sets 'Active' status ON with what operation
 	if (document.getElementById("curr_dis").textContent == "Start") {
 		return;
 	}
+	if (current.lastKey != undefined) {
+        document.getElementsByClassName(current.lastKey)[0].removeAttribute("id", "buttonClicked");
+    }
 	if (current.oppActive === true && current.nextVal != undefined)  { //If there is a pending calculation to be completed, do it and update
 		finishCalc(); //Helper Function for above
 	}
 	current.oppActive = true;
-	current.operation = `${type}`;
+	current.operation = type;
 	if (current.total == undefined) { 
 		current.total = document.getElementById("curr_dis").textContent;
 	}
+	current.lastKey = type;
+	document.getElementsByClassName(type)[0].setAttribute("id", "buttonClicked");
 };
 function operation(val, type) { //Handles Operations based on specified type in Finish Calculations
-	if (current.total === undefined) {
-		var added = Number(val); 
+	if (val == ".") {
+		val = "0";
+	}
+	if (current.total == undefined) { 
+		var added = document.getElementById("curr_dis").textContent;
 	} else {
-		if (type == "add") {
+		if (type == "+") {
 			var added = Number(val)+ Number(current.total); 
-		} else if (type == "sub") {
+		} else if (type == "-") {
 			var added = Number(current.total) - Number(val); 
-		} else if (type == "mul") {
+		} else if (type == "*") {
 			var added = Number(current.total) * Number(val); 
-		} else if (type == "div") {
+		} else if (type == "/") {
 			var added = Number(current.total) / Number(val); 
 		} 
 	}
@@ -150,8 +183,83 @@ function operation(val, type) { //Handles Operations based on specified type in 
 	}
 };  
 
+//Equal, Calculate Operations
+function calculate() {
+	if (document.getElementById("curr_dis").textContent == "Start" || current.nextVal == undefined) {
+		return;
+	}
+	if (current.lastKey != undefined) {
+        document.getElementsByClassName(current.lastKey)[0].removeAttribute("id", "buttonClicked");
+    }
+	if (current.oppActive == true)  { //If there is a pending calculation to be completed, do it and update
+		finishCalc(); //Helper Function for above
+	}
+	
+	current.lastKey = "Enter";
+	document.getElementsByClassName("Enter")[0].setAttribute("id", "buttonClicked");
+};
 
+//Percent
+function convert_to_percent() {
+	if (document.getElementById("curr_dis").textContent == "Start") {
+		return;
+	}
+	if (current.lastKey != undefined) {
+        document.getElementsByClassName(current.lastKey)[0].removeAttribute("id", "buttonClicked");
+    }
+	current.nextVal = 100;
+	current.oppActive = true;
+	current.operation = "/";
+	finishCalc();
+	current.oppActive = false;
+	current.operation = null;
 
+	current.lastKey = "%";
+	document.getElementsByClassName("%")[0].setAttribute("id", "buttonClicked");
+}
+
+//Decimal
+function decimal() {
+	add_to_display(".")
+}
+
+//Decimal
+function Delete() {
+	var curr_display = document.getElementById("curr_dis");
+	var curr_value = curr_display.textContent;
+	if (curr_value === 'Start' || curr_value == "0") {
+		return;
+	} 
+	if (current.lastKey != undefined) {
+        document.getElementsByClassName(current.lastKey)[0].removeAttribute("id", "buttonClicked");
+    }
+	if (curr_value == "-") {
+		curr_display.textContent = '0';
+		current.cleared = true;
+		current.display_length = 1;
+	}
+	else if (current.nextVal != undefined) {
+		curr_display.textContent = curr_display.textContent.slice(0, - 1);
+		current.nextVal = current.nextVal.slice(0, -1);
+		current.display_length -= 1;
+	} else {
+		curr_display.textContent = curr_display.textContent.slice(0, - 1);
+		current.display_length -= 1;
+	}
+	if (curr_value.length == 1) {
+		curr_display.textContent = '0';
+		current.cleared = true;
+		current.display_length = 1;
+	}
+	current.lastKey = "Backspace";
+	document.getElementsByClassName("Backspace")[0].setAttribute("id", "buttonClicked");
+}
+function incomplete() {
+	if (current.lastKey != undefined) {
+        document.getElementsByClassName(current.lastKey)[0].removeAttribute("id", "buttonClicked");
+    }
+	return;
+}
 
 
 var current = class Active {};

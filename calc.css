@@ -5,21 +5,20 @@
 }
 /* Inputs */
 @media (max-width: 720px) {
+    
 	.input{
         text-align: right;
-        width: 85%;
-        margin-left: 8%;
+        width: 90% !important;
         border-style:inset;
-        line-height: 30px;
+        line-height: 45px;
         font-size: 20px;
     }
     .displays{
         text-align: right;
         width: 85%;
-        margin-left: 8%;
     }
     button{
-        background-color: #272f38;
+        background-color:rgba(37, 37, 37, 0.521); ;
         color: white;
         font-family: 'Hind', helvetica;
         font-size: 10px;
@@ -31,21 +30,31 @@
         line-height: 55px;
         margin: 0, auto;
     }
+    .h3Enter {
+        width: 95% !important;
+    }
+    .Enter {
+        width: 95% !important;
+    }
 }
 
 .input{
     text-align: right;
-    width: 85%;
-    margin: 0, auto;
+    width:  85%;
+    margin-top: 23.4px;
+    margin-bottom: 23.4px;
+    margin-left: auto;
+    margin-right: auto;
     border-style:inset;
     font-size: 20px;
     color: white;
     opacity: 100%;
+    background-color: rgba(37, 37, 37, 0.521);
+    padding-right: 10px;
 }
 .displays{
     text-align: right;
     width: 85%;
-    margin: 0, auto;
     font-size: 20px;
     color: white;
 }
@@ -63,28 +72,44 @@
 }
 /* buttons */
 button{
-    background-color: #272f38;
+    background-color: rgba(37, 37, 37, 0.521);
     color: white;
     font-family: 'Hind', helvetica;
     font-size: 30px;
     border-style: inset;
     padding-right: 20px;
     padding-left: 20px;
+    transition-duration: 0.4s;
+    cursor: pointer; 
 }
 button:hover {
-    background-color: white; /* Green */
-    color: #272f38;
+    background-color: rgb(70, 96, 102); /* Green */
+    color: #a1adbb;
     border-style: inset;
     border-width: 5px;
+    cursor: pointer; 
 }
-button {
-    transition-duration: 0.4s;
-  }
 
-button:active {
+/* button:active {
 background-color: #272f38;
 color: white;
 box-shadow: 0 5px #666;
 transform: translateY(4px);
+} */
+
+
+/* For Button clicks */
+#buttonClicked{
+    background-color: rgb(219, 219, 219); 
+    color: black;
+    border-style: inset;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+    border-width: 5px;
+    cursor: pointer; 
 }
 
+#buttonIncomplete {
+    cursor: not-allowed;
+    background-color: #272f38; 
+}
