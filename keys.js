@@ -40,6 +40,7 @@ document.addEventListener("keydown", function(event) {
         calculate();
     } else if (event.key == "Backspace") { 
         Delete();
+        return;
     } else if (event.key == "Escape") { 
         cleare();
     } else{
