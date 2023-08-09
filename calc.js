@@ -70,6 +70,13 @@ function cleare() {
 	
 	var curr_display = document.getElementById("curr_dis");
 	var curr_value = curr_display.textContent;
+	if (current.lastKey != undefined) {
+		if (current.lastKey == "Enter") {
+			document.getElementsByClassName(current.lastKey)[0].removeAttribute("id", "enterClicked");
+		} else{
+			document.getElementsByClassName(current.lastKey)[0].removeAttribute("id", "buttonClicked");
+		}
+	}
 	if (curr_value === 'Start') {
 		return;
 	}
@@ -80,13 +87,7 @@ function cleare() {
 		document.getElementById("last_display3").textContent = "";
 		document.getElementById("last_display4").textContent = "";
 		document.getElementById("last_display5").textContent = "";
-	if (current.lastKey != undefined) {
-		if (current.lastKey == "Enter") {
-			document.getElementsByClassName(current.lastKey)[0].removeAttribute("id", "enterClicked");
-		} else{
-			document.getElementsByClassName(current.lastKey)[0].removeAttribute("id", "buttonClicked");
-		}
-	}
+	
 	current.lastKey = "Escape";
 	document.getElementsByClassName("Escape")[0].setAttribute("id", "buttonClicked");
 };
