@@ -66,6 +66,10 @@ function cleare() {
 	if (current.lastKey != undefined) {
 		document.getElementsByClassName(current.lastKey)[0].removeAttribute("id", "buttonClicked");
 	}
+	if (current.deleteD1 = true) {
+		logDisplay();
+		current.deleteD1 = false;
+	} 
 	if (current.cleared == true) {  //Next is going to be second clear
 		current = class Active {}
 		curr_display.textContent = 'Start';
@@ -75,10 +79,13 @@ function cleare() {
 		document.getElementById("last_display4").textContent = "";
 		document.getElementById("last_display5").textContent = "";
 	} else { //First Clear. Save values
+		if (current.nextVal == undefined) {
+			current.total = undefined;
+		}
 		current.cleared = true;
 		curr_display.textContent = '0';
-		document.getElementById("last_display1").textContent = '0';
-		current.nextVal = 0;
+		document.getElementById("last_display1").textContent = "";
+		current.nextVal = undefined;
 	}
 	current.display_length = 0;
 	current.sign = "+";
@@ -203,7 +210,7 @@ function operation(val, type) { //Handles Operations based on specified type in 
 
 //Equal, Calculate Operations
 function calculate() {
-	if (document.getElementById("curr_dis").textContent == "Start" || current.nextVal == undefined) {
+	if (document.getElementById("curr_dis").textContent == "Start" || current.nextVal == undefined || current.total == undefined) {
 		return;
 	}
 	if (current.lastKey != undefined) {
