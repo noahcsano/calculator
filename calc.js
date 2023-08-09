@@ -84,7 +84,7 @@ function cleare() {
 		}
 		current.cleared = true;
 		curr_display.textContent = '0';
-		document.getElementById("last_display1").textContent = "";
+		document.getElementById("last_display1").textContent = "0";
 		current.nextVal = undefined;
 	}
 	current.display_length = 0;
@@ -118,7 +118,7 @@ function add_to_display(i) {
 			current.nextVal = i;
 			current.sign = "+";
 			current.display_length = 1
-		} else if (current.display_length > 18) { //Length is too long
+		} else if (current.display_length > 15 ) { //Length is too long
 			alert('Too Large!');
 		}
 		else{ //Else
@@ -127,11 +127,14 @@ function add_to_display(i) {
 			current.nextVal += i;
 			current.display_length += 1
 		}
-	} else if (current.display_length > 18) { //Length is too long
+	} else if (current.display_length > 15) { //Length is too long
 		alert('Too Large!');
-	} else if (curr_value === 'Start' || curr_value === "0" || current.deleteD1 == true) { //Case for 0 or beginning of calculation
+	} else if (curr_value === 'Start' || curr_value === "0") { //Case for 0 or beginning of calculation
+		if (current.deleteD1 == true) {
+			logDisplay();
+		}
+		current.total = undefined;
 		curr_display.textContent = i;
-		logDisplay();
 		document.getElementById("last_display1").textContent = i;
 		current.cleared = false;
 		current.display_length = 1;
@@ -156,6 +159,11 @@ function finishCalc() { //Next Val == the currently displayed final value. We ne
 	} else if (current.operation == "/") {
 		operation(current.nextVal, "/");
 	}
+	
+	if (current.total.toString().length > 15) {
+		current.total = current.total.toString().slice(0, 8);
+		console.log(current.total);
+	}
 	document.getElementById("curr_dis").textContent = current.total;
 	display_curr_calc(` = ${current.total}`.toString());
 	current.deleteD1 = true;
@@ -177,7 +185,10 @@ function OP(type) { //Initial Function Called when operation buttons are pressed
 	current.operation = type;
 	if (current.total == undefined) { 
 		current.total = document.getElementById("curr_dis").textContent;
+	} else {
+		logDisplay();
 	}
+	document.getElementById("last_display1").textContent = current.total;
 	display_curr_calc(`${type}`);
 	current.lastKey = type;
 	document.getElementsByClassName(type)[0].setAttribute("id", "buttonClicked");
@@ -221,7 +232,6 @@ function calculate() {
 	}
 	current.oppActive = false;
 	current.operation = undefined;
-	current.total = undefined;
 	current.lastKey = "Enter";
 	document.getElementsByClassName("Enter")[0].setAttribute("id", "buttonClicked");
 };
@@ -297,9 +307,19 @@ function display_curr_calc(val) {
 }
 
 function logDisplay() {
+	//4 to 5
 	document.getElementById("last_display5").textContent = document.getElementById("last_display4").textContent;
+	
+	//3 to 4
 	document.getElementById("last_display4").textContent = document.getElementById("last_display3").textContent;
+	
+	//2 to 3
 	document.getElementById("last_display3").textContent = document.getElementById("last_display2").textContent;
-	document.getElementById("last_display2").textContent = document.getElementById("last_display1").textContent;
+	
+	//1 to 2
+	if (document.getElementById("last_display1").textContent != "0") {
+		document.getElementById("last_display2").textContent = document.getElementById("last_display1").textContent;
+		deleteD1 = false;
+	}
 }
 var current = class Active {};

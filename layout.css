@@ -12,7 +12,7 @@ body {
 	font-family: 'Hind', helvetica;
 	font-size: 20px;
 	color: #797878;
-	background: #000000;
+	background: #222121;
 	letter-spacing: 0em;
 	font-weight: 300;
 
@@ -112,7 +112,7 @@ body {
 	border-style: double;
 	border-width: 5px;
 	border-radius: 5%;
-	background-color: rgb(138, 181, 230);
+	background-color: black;
 }
 
 
@@ -138,9 +138,7 @@ body {
     }
 	.container{
 		width: 40%;
-
 	}
-
 }
 /* 3. Columns */
 .row {

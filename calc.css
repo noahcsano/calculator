@@ -6,17 +6,15 @@
 h3 {
     margin-top: 0;
     margin-bottom: 0;
+    overflow: hidden;
 }
 /* Inputs */
 @media (max-width: 720px) {
     button{
-        font-size: 10px !important;
- 
         font-size: 20px !important;
         padding-right: 15px !important;
         padding-left: 15px !important; 
-        padding-top: 15px !important;
-        padding-bottom: 15px !important;
+        padding-bottom: 20px !important;
     }
     .row {
         line-height: 55px;
@@ -38,13 +36,22 @@ h3 {
     height: 50px;
     
 }
+/* color of number buttons */
+.numbs{  
+    color:rgb(125, 191, 221) !important;
+}
+.non_numbs{
+    color:rgb(226, 95, 95) !important;
+}
+
 #display {
     background-color: white;
+    opacity: 80%;
     width:  90%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px;
-    margin-bottom: 5px;
+    margin-bottom: 12px;
     text-align: right;
     font-size: 17px;
     color: rgb(0, 0, 0);
@@ -64,18 +71,24 @@ h3 {
 }
 /* buttons */
 button{
-    background-color:rgb(138, 181, 230);
+    background-color: black;
     color: white;
     font-family: 'Hind', helvetica;
     font-size: 30px;
-    padding-right: 20px;
-    padding-left: 20px;
+    /* padding-right: 20px;
+    padding-left: 20px; */
     cursor: pointer; 
-    border: none;
+    border: solid;
+    border-color: grey;
+    width: 60px;
+    height:40px;
+    border-radius: 20%;
+}
+#enter{
+    width: 120px !important;
 }
 /* button:hover {
-    background-color: rgb(70, 96, 102);
-    color: #a1adbb;
+    background-color: rgb(53, 54, 56); 
     border-style: inset;
     border-width: 5px;
     cursor: pointer; 
@@ -91,7 +104,7 @@ transform: translateY(4px);
 
 /* For Button clicks */
 #buttonClicked{
-    background-color: rgb(47, 139, 245); 
+    background-color: rgb(53, 54, 56); 
     color: black;
     border-style: none;
     box-shadow: 3px 3px #666;
