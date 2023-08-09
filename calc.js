@@ -17,15 +17,14 @@ $(function () {
 
 class Active {
 	constructor() {
-	  this.cleared = false; //If True, it means that the next clear is going to reset the calculator
 	  this.total = undefined;
 	  this.display_length = 0;
 	  this.sign = "+";
-	  this.oppActive = false;
-	  this.operation = null;
+	  this.oppActive = undefined
+	  this.operation = undefined;
 	  this.nextVal = undefined;
-	  this.lastKey = null; //For reading keyboard inputs
-	  this.deleteD1 = false;
+	  this.lastKey = undefined; //For reading keyboard inputs
+	  this.deleteD1 = undefined;
 	}
   }
 
@@ -47,26 +46,40 @@ function change_sign() {
 		current.sign = "-";
 		curr_display.textContent = "-" + curr_value;
 		if (current.nextVal != undefined) {
-			current.nextVal = "-" + current.nextVal;
-		}
+			current.nextVal = " -" + current.nextVal;
+			document.getElementById("last_display1").textContent = current.total + current.operation + current.nextVal;
+		} else if(current.nextVal == undefined && current.oppActive == undefined) {
+			console.log(2)
+			document.getElementById("last_display1").textContent =  "-" + document.getElementById("last_display1").textContent;
+		} 
 	}else{
 		current.sign = "+";
 		curr_display.textContent = curr_value.slice(1);
 		if (current.nextVal != undefined) {
 			current.nextVal = current.nextVal.toString().slice(1);
-		}
+			document.getElementById("last_display1").textContent = current.total + " " + current.operation + " " +  current.nextVal;
+		} else if(current.nextVal == undefined && current.oppActive == undefined) {
+			document.getElementById("last_display1").textContent =  current.total;
+		} 
 	}
-	display_curr_calc(curr_display.textContent);
 	current.lastKey = "+/-";
 	document.getElementsByClassName("+/-")[0].setAttribute("id", "buttonClicked");
 };
 //AC Case 
 function cleare() {
+	
 	var curr_display = document.getElementById("curr_dis");
 	var curr_value = curr_display.textContent;
 	if (curr_value === 'Start') {
 		return;
 	}
+	current = class Active {}
+		curr_display.textContent = 'Start';
+		document.getElementById("last_display1").textContent = "";
+		document.getElementById("last_display2").textContent = "";
+		document.getElementById("last_display3").textContent = "";
+		document.getElementById("last_display4").textContent = "";
+		document.getElementById("last_display5").textContent = "";
 	if (current.lastKey != undefined) {
 		if (current.lastKey == "Enter") {
 			document.getElementsByClassName(current.lastKey)[0].removeAttribute("id", "enterClicked");
@@ -74,30 +87,6 @@ function cleare() {
 			document.getElementsByClassName(current.lastKey)[0].removeAttribute("id", "buttonClicked");
 		}
 	}
-	if (current.deleteD1 = true) {
-		logDisplay();
-		current.deleteD1 = false;
-	} 
-	if (current.cleared == true) {  //Next is going to be second clear
-		current = class Active {}
-		curr_display.textContent = 'Start';
-		document.getElementById("last_display1").textContent = "";
-		document.getElementById("last_display2").textContent = "";
-		document.getElementById("last_display3").textContent = "";
-		document.getElementById("last_display4").textContent = "";
-		document.getElementById("last_display5").textContent = "";
-	} else { //First Clear. Save values
-		if (current.nextVal == undefined) {
-			current.total = undefined;
-		}
-		current.cleared = true;
-		curr_display.textContent = '0';
-		document.getElementById("last_display1").textContent = "0";
-		current.nextVal = undefined;
-	}
-	current.display_length = 0;
-	current.sign = "+";
-
 	current.lastKey = "Escape";
 	document.getElementsByClassName("Escape")[0].setAttribute("id", "buttonClicked");
 };
@@ -116,15 +105,9 @@ function add_to_display(i) {
 			document.getElementsByClassName(current.lastKey)[0].removeAttribute("id", "buttonClicked");
 		}
     }
-	if (current.oppActive === true) { //If user clicked an operation before this, we need to store the upcoming value in NextVal so that we can add it later
-		if (current.cleared == true) { //Case for 0 or beginning of calculation
-			curr_display.textContent = i;
-			display_curr_calc(i);
-			current.nextVal = i;
-			current.cleared = false;
-			current.sign = "+";
-			current.display_length = 1
-		} else if (current.nextVal == undefined) { //If this is the first digit 
+	if (current.oppActive == true) { //If user clicked an operation before this, we need to store the upcoming value in NextVal so that we can add it later
+
+		if (current.nextVal == undefined) { //If this is the first digit 
 			curr_display.textContent = i;
 			display_curr_calc(i);
 			current.nextVal = i;
@@ -141,17 +124,15 @@ function add_to_display(i) {
 		}
 	} else if (current.display_length > 15) { //Length is too long
 		alert('Too Large!');
-	} else if (curr_value === 'Start' || curr_value === "0") { //Case for 0 or beginning of calculation
-		if (current.deleteD1 == true) {
-			logDisplay();
-		}
+	} else if (curr_value === 'Start' ||  current.total != undefined ||curr_value === "0") { //Case for 0 or beginning of calculation
+		logDisplay();
 		current.total = undefined;
 		curr_display.textContent = i;
 		document.getElementById("last_display1").textContent = i;
-		current.cleared = false;
 		current.display_length = 1;
 		current.sign = "+";
-		current.deleteD1 = false;
+		current.deleteD1 = undefined;
+		current.nextVal = undefined
 	} else { //Case where you just continue displaying. At the start of Calc
 		var concat = curr_value + i;
 		curr_display.textContent = concat;
@@ -201,11 +182,11 @@ function OP(type) { //Initial Function Called when operation buttons are pressed
 	current.operation = type;
 	if (current.total == undefined) { 
 		current.total = document.getElementById("curr_dis").textContent;
-	} else {
-		logDisplay();
+	} else if (current.nextVal == undefined){
+		logDisplay(); //to display the 
 	}
 	document.getElementById("last_display1").textContent = current.total;
-	display_curr_calc(`${type}`);
+	display_curr_calc(` ${type} `);
 	current.lastKey = type;
 	document.getElementsByClassName(type)[0].setAttribute("id", "buttonClicked");
 };
@@ -250,7 +231,7 @@ function calculate() {
 	if (current.oppActive == true)  { //If there is a pending calculation to be completed, do it and update
 		finishCalc(); //Helper Function for above
 	}
-	current.oppActive = false;
+	current.oppActive = undefined;
 	current.operation = undefined;
 	current.lastKey = "Enter";
 	document.getElementsByClassName("Enter")[0].setAttribute("id", "enterClicked");
@@ -272,8 +253,8 @@ function convert_to_percent() {
 	current.oppActive = true;
 	current.operation = "/";
 	finishCalc();
-	current.oppActive = false;
-	current.operation = null;
+	current.oppActive = undefined;
+	current.operation = undefined;
 
 	current.lastKey = "%";
 	document.getElementsByClassName("%")[0].setAttribute("id", "buttonClicked");
@@ -297,7 +278,6 @@ function Delete() {
 	if (curr_value == "-") {
 		curr_display.textContent = '0';
 		display_curr_calc(curr_display.textContent);
-		current.cleared = true;
 		current.display_length = 1;
 	}
 	else if (current.nextVal != undefined) {
@@ -313,7 +293,6 @@ function Delete() {
 	if (curr_value.length == 1) {
 		curr_display.textContent = '0';
 		display_curr_calc(curr_display.textContent);
-		current.cleared = true;
 		current.display_length = 1;
 	}
 	// current.lastKey = "Backspace";
@@ -331,7 +310,11 @@ function incomplete() {
 
 
 function display_curr_calc(val) {
-	document.getElementById("last_display1").textContent += val;
+	if (document.getElementById("last_display1").textContent == "0" || document.getElementById("last_display1").textContent == ""){
+		document.getElementById("last_display1").textContent = val;
+	} else{
+		document.getElementById("last_display1").textContent += val;
+	}
 }
 
 function logDisplay() {
@@ -347,7 +330,7 @@ function logDisplay() {
 	//1 to 2
 	if (document.getElementById("last_display1").textContent != "0") {
 		document.getElementById("last_display2").textContent = document.getElementById("last_display1").textContent;
-		deleteD1 = false;
+		deleteD1 = undefined;
 	}
 }
 var current = class Active {};
