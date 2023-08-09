@@ -133,3 +133,6 @@ transform: translateY(4px);
     cursor: not-allowed;
     background-color: #272f38; 
 }
+.by {
+    font-size: 15px !important;
+}
