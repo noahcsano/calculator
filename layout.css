@@ -9,7 +9,7 @@ body {
 	font-family: 'Hind', helvetica;
 	font-size: 20px;
 	color: #797878;
-	background: #000000;
+	background: #18002e;
 	letter-spacing: 0em;
 	font-weight: 300;
 
@@ -109,7 +109,7 @@ body {
 	border-style: double;
 	border-width: 5px;
 	border-radius: 5%;
-	background-color: rgb(139, 188, 245);
+	background-color: rgb(138, 181, 230);
 }
 
 
