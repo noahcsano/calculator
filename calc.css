@@ -34,6 +34,9 @@ h3 {
     .enter{
         width: 120px !important;
     }
+    .by {
+        font-size: 10px !important;
+    }
 }
 .input{
     height: 50px;
@@ -134,5 +137,5 @@ transform: translateY(4px);
     background-color: #272f38; 
 }
 .by {
-    font-size: 15px !important;
+    font-size: 15px;
 }
