@@ -37,7 +37,11 @@ function change_sign() {
 		return;
 	}
 	if (current.lastKey != undefined) {
-		document.getElementsByClassName(current.lastKey)[0].removeAttribute("id", "buttonClicked");
+		if (current.lastKey == "Enter") {
+			document.getElementsByClassName(current.lastKey)[0].removeAttribute("id", "enter");
+		} else{
+			document.getElementsByClassName(current.lastKey)[0].removeAttribute("id", "buttonClicked");
+		}
 	}
 	if (current.sign == "+") {
 		current.sign = "-";
@@ -64,7 +68,11 @@ function cleare() {
 		return;
 	}
 	if (current.lastKey != undefined) {
-		document.getElementsByClassName(current.lastKey)[0].removeAttribute("id", "buttonClicked");
+		if (current.lastKey == "Enter") {
+			document.getElementsByClassName(current.lastKey)[0].removeAttribute("id", "enterClicked");
+		} else{
+			document.getElementsByClassName(current.lastKey)[0].removeAttribute("id", "buttonClicked");
+		}
 	}
 	if (current.deleteD1 = true) {
 		logDisplay();
@@ -102,7 +110,11 @@ function add_to_display(i) {
 		return;
 	}
 	if (current.lastKey != undefined) {
-        document.getElementsByClassName(current.lastKey)[0].removeAttribute("id", "buttonClicked");
+		if (current.lastKey == "Enter") {
+			document.getElementsByClassName(current.lastKey)[0].removeAttribute("id", "enterClicked");
+		} else{
+			document.getElementsByClassName(current.lastKey)[0].removeAttribute("id", "buttonClicked");
+		}
     }
 	if (current.oppActive === true) { //If user clicked an operation before this, we need to store the upcoming value in NextVal so that we can add it later
 		if (current.cleared == true) { //Case for 0 or beginning of calculation
@@ -176,7 +188,11 @@ function OP(type) { //Initial Function Called when operation buttons are pressed
 		return;
 	}
 	if (current.lastKey != undefined) {
-        document.getElementsByClassName(current.lastKey)[0].removeAttribute("id", "buttonClicked");
+		if (current.lastKey == "Enter") {
+			document.getElementsByClassName(current.lastKey)[0].removeAttribute("id", "enterClicked");
+		} else{
+			document.getElementsByClassName(current.lastKey)[0].removeAttribute("id", "buttonClicked");
+		}
     }
 	if (current.oppActive === true && current.nextVal != undefined)  { //If there is a pending calculation to be completed, do it and update
 		finishCalc(); //Helper Function for above
@@ -225,7 +241,11 @@ function calculate() {
 		return;
 	}
 	if (current.lastKey != undefined) {
-        document.getElementsByClassName(current.lastKey)[0].removeAttribute("id", "buttonClicked");
+		if (current.lastKey == "Enter") {
+			document.getElementsByClassName(current.lastKey)[0].removeAttribute("id", "enterClicked");
+		} else{
+			document.getElementsByClassName(current.lastKey)[0].removeAttribute("id", "buttonClicked");
+		}
     }
 	if (current.oppActive == true)  { //If there is a pending calculation to be completed, do it and update
 		finishCalc(); //Helper Function for above
@@ -233,7 +253,7 @@ function calculate() {
 	current.oppActive = false;
 	current.operation = undefined;
 	current.lastKey = "Enter";
-	document.getElementsByClassName("Enter")[0].setAttribute("id", "buttonClicked");
+	document.getElementsByClassName("Enter")[0].setAttribute("id", "enterClicked");
 };
 
 //Percent
@@ -242,7 +262,11 @@ function convert_to_percent() {
 		return;
 	}
 	if (current.lastKey != undefined) {
-        document.getElementsByClassName(current.lastKey)[0].removeAttribute("id", "buttonClicked");
+		if (current.lastKey == "Enter") {
+			document.getElementsByClassName(current.lastKey)[0].removeAttribute("id", "enterClicked");
+		} else{
+			document.getElementsByClassName(current.lastKey)[0].removeAttribute("id", "buttonClicked");
+		}
     }
 	current.nextVal = 100;
 	current.oppActive = true;
@@ -296,7 +320,11 @@ function Delete() {
 }
 function incomplete() {
 	if (current.lastKey != undefined) {
-        document.getElementsByClassName(current.lastKey)[0].removeAttribute("id", "buttonClicked");
+		if (current.lastKey == "Enter") {
+			document.getElementsByClassName(current.lastKey)[0].removeAttribute("id", "enterClicked");
+		} else{
+			document.getElementsByClassName(current.lastKey)[0].removeAttribute("id", "buttonClicked");
+		}
     }
 	return;
 }
