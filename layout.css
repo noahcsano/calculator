@@ -1,4 +1,7 @@
 /* BAsics */
+*{
+	touch-action: manipulation;
+}
 html{
 	height: 100%;
 }
@@ -9,7 +12,7 @@ body {
 	font-family: 'Hind', helvetica;
 	font-size: 20px;
 	color: #797878;
-	background: #18002e;
+	background: #000000;
 	letter-spacing: 0em;
 	font-weight: 300;
 
