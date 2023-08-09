@@ -179,6 +179,12 @@ function OP(type) { //Initial Function Called when operation buttons are pressed
     }
 	if (current.oppActive === true && current.nextVal != undefined)  { //If there is a pending calculation to be completed, do it and update
 		finishCalc(); //Helper Function for above
+	} else if (current.oppActive === true && current.nextVal == undefined) {
+		current.operation = type;
+		document.getElementById("last_display1").textContent = current.total + ` ${type} `;
+		current.lastKey = type;
+		document.getElementsByClassName(type)[0].setAttribute("id", "buttonClicked");
+		return;
 	}
 	current.oppActive = true;
 	current.operation = type;
