@@ -30,8 +30,8 @@ document.addEventListener("keydown", function(event) {
         OP('*');
     } else if (event.key == "/") { 
         OP('/');
-    } else if (event.key == "%") { 
-        convert_to_percent();
+    } else if (event.key == "^") { 
+        OP("^");
     }  else if (event.key == ".") {
         decimal();
     } else if (event.key == "=") { 

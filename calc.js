@@ -151,6 +151,8 @@ function finishCalc() { //Next Val == the currently displayed final value. We ne
 		operation(current.nextVal, "*");
 	} else if (current.operation == "/") {
 		operation(current.nextVal, "/");
+	} else if (current.operation == "^") {
+		operation(current.nextVal, "^");
 	}
 	
 	if (current.total.toString().length > 15) {
@@ -205,7 +207,9 @@ function operation(val, type) { //Handles Operations based on specified type in 
 			var added = Number(current.total) * Number(val); 
 		} else if (type == "/") {
 			var added = Number(current.total) / Number(val); 
-		} 
+		} else if (type == "^") {
+			var added = Number(current.total) ** Number(val); 
+		}
 	}
 	addedStr = added.toString();
 	current.total = addedStr;
@@ -237,28 +241,7 @@ function calculate() {
 	document.getElementsByClassName("Enter")[0].setAttribute("id", "enterClicked");
 };
 
-//Percent
-function convert_to_percent() {
-	if (document.getElementById("curr_dis").textContent == "Start") {
-		return;
-	}
-	if (current.lastKey != undefined) {
-		if (current.lastKey == "Enter") {
-			document.getElementsByClassName(current.lastKey)[0].removeAttribute("id", "enterClicked");
-		} else{
-			document.getElementsByClassName(current.lastKey)[0].removeAttribute("id", "buttonClicked");
-		}
-    }
-	current.nextVal = 100;
-	current.oppActive = true;
-	current.operation = "/";
-	finishCalc();
-	current.oppActive = undefined;
-	current.operation = undefined;
 
-	current.lastKey = "%";
-	document.getElementsByClassName("%")[0].setAttribute("id", "buttonClicked");
-}
 
 //Decimal
 function decimal() {
