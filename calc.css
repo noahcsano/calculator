@@ -31,6 +31,9 @@ h3 {
     .curr{
         font-size: 25px !important;
     }
+    .enter{
+        width: 120px !important;
+    }
 }
 .input{
     height: 50px;
