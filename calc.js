@@ -70,6 +70,10 @@ function cleare() {
 		current = class Active {}
 		curr_display.textContent = 'Start';
 		document.getElementById("last_display1").textContent = "";
+		document.getElementById("last_display2").textContent = "";
+		document.getElementById("last_display3").textContent = "";
+		document.getElementById("last_display4").textContent = "";
+		document.getElementById("last_display5").textContent = "";
 	} else { //First Clear. Save values
 		current.cleared = true;
 		curr_display.textContent = '0';
@@ -120,6 +124,7 @@ function add_to_display(i) {
 		alert('Too Large!');
 	} else if (curr_value === 'Start' || curr_value === "0" || current.deleteD1 == true) { //Case for 0 or beginning of calculation
 		curr_display.textContent = i;
+		logDisplay();
 		document.getElementById("last_display1").textContent = i;
 		current.cleared = false;
 		current.display_length = 1;
@@ -282,5 +287,12 @@ function incomplete() {
 
 function display_curr_calc(val) {
 	document.getElementById("last_display1").textContent += val;
+}
+
+function logDisplay() {
+	document.getElementById("last_display5").textContent = document.getElementById("last_display4").textContent;
+	document.getElementById("last_display4").textContent = document.getElementById("last_display3").textContent;
+	document.getElementById("last_display3").textContent = document.getElementById("last_display2").textContent;
+	document.getElementById("last_display2").textContent = document.getElementById("last_display1").textContent;
 }
 var current = class Active {};
