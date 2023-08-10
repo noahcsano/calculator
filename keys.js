@@ -45,8 +45,6 @@ document.addEventListener("keydown", function(event) {
         cleare();
     } else if (event.key == "s") { 
         sqrt();
-    } else if (event.key == "p") { 
-        add_to_display("pi");
     } else if (event.key == "q") { 
         off();
     } else{

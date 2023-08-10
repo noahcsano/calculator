@@ -107,7 +107,6 @@ function add_to_display(i) {
 		}
     }
 	if (current.oppActive == true) { //If user clicked an operation before this, we need to store the upcoming value in NextVal so that we can add it later
-
 		if (current.nextVal == undefined) { //If this is the first digit 
 			curr_display.textContent = i;
 			display_curr_calc(i);
@@ -312,5 +311,45 @@ function logDisplay() {
 		document.getElementById("last_display2").textContent = document.getElementById("last_display1").textContent;
 		deleteD1 = undefined;
 	}
+}
+
+function sqrt(){
+	var curr_display = document.getElementById("curr_dis");
+	var curr_value = curr_display.textContent;
+	if (current.lastKey != undefined) {
+		if (current.lastKey == "Enter") {
+			document.getElementsByClassName(current.lastKey)[0].removeAttribute("id", "enterClicked");
+		} else{
+			document.getElementsByClassName(current.lastKey)[0].removeAttribute("id", "buttonClicked");
+		}
+    }
+	if ((current.oppActive == true && current.nextVal == undefined) || curr_value == "Start") { //Attempting to sqrt when equation is: "a +  "
+		return; 
+	} else if (current.oppActive == true && current.nextVal != undefined) { //Sqrt second value of equation "a + b"
+		var val = Math.sqrt(Number(curr_value)).toString();
+		if (val.length > 8) {
+			val = val.slice(0, 8);
+		}
+		curr_display.textContent = val; 
+		document.getElementById("last_display1").textContent = current.total + ` ${current.operation} ` + val;
+		current.nextVal = val;
+		current.display_length = val.length;
+	} else if (current.total != undefined || current.oppActive == undefined) { //Sqrt first value of equation "a"
+		var val = Math.sqrt(Number(curr_value)).toString();
+		if (val.length > 8) {
+			val = val.slice(0, 8);
+		}
+		current.total = undefined;
+		curr_display.textContent = val;
+		document.getElementById("last_display1").textContent = val;
+		current.display_length = val.length;
+		current.sign = "+";
+		current.deleteD1 = undefined;
+		current.nextVal = undefined
+	}
+	current.lastKey = "s";
+	document.getElementsByClassName("s")[0].setAttribute("id", "buttonClicked");
+
+	
 }
 var current = class Active {};
