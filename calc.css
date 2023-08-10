@@ -139,3 +139,11 @@ transform: translateY(4px);
 .by {
     font-size: 15px;
 }
+
+
+/* Trashcan */
+.trash{
+    border: double;
+    border-color: white;
+    
+}

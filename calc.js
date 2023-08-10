@@ -287,16 +287,6 @@ function Delete() {
 	}
 	// current.lastKey = "Backspace";
 }
-function incomplete() {
-	if (current.lastKey != undefined) {
-		if (current.lastKey == "Enter") {
-			document.getElementsByClassName(current.lastKey)[0].removeAttribute("id", "enterClicked");
-		} else{
-			document.getElementsByClassName(current.lastKey)[0].removeAttribute("id", "buttonClicked");
-		}
-    }
-	return;
-}
 
 
 function display_curr_calc(val) {
