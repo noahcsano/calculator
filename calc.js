@@ -49,7 +49,6 @@ function change_sign() {
 			current.nextVal = " -" + current.nextVal;
 			document.getElementById("last_display1").textContent = current.total + current.operation + current.nextVal;
 		} else if(current.nextVal == undefined && current.oppActive == undefined) {
-			console.log(2)
 			document.getElementById("last_display1").textContent =  "-" + document.getElementById("last_display1").textContent;
 		} 
 	}else{
@@ -157,7 +156,6 @@ function finishCalc() { //Next Val == the currently displayed final value. We ne
 	
 	if (current.total.toString().length > 15) {
 		current.total = current.total.toString().slice(0, 8);
-		console.log(current.total);
 	}
 	document.getElementById("curr_dis").textContent = current.total;
 	display_curr_calc(` = ${current.total}`.toString());
@@ -327,6 +325,11 @@ function sqrt(){
 		return; 
 	} else if (current.oppActive == true && current.nextVal != undefined) { //Sqrt second value of equation "a + b"
 		var val = Math.sqrt(Number(curr_value)).toString();
+		if (val == 'NaN') {
+			alert('invalid');
+			cleare();
+			return;
+		}
 		if (val.length > 8) {
 			val = val.slice(0, 8);
 		}
@@ -336,16 +339,24 @@ function sqrt(){
 		current.display_length = val.length;
 	} else if (current.total != undefined || current.oppActive == undefined) { //Sqrt first value of equation "a"
 		var val = Math.sqrt(Number(curr_value)).toString();
+		if (val == 'NaN') {
+			alert('invalid');
+			cleare();
+			return;
+		}
 		if (val.length > 8) {
 			val = val.slice(0, 8);
 		}
+		if (current.deleteD1 != undefined){
+			logDisplay();
+		}
 		current.total = undefined;
 		curr_display.textContent = val;
-		document.getElementById("last_display1").textContent = val;
+		document.getElementById("last_display1").textContent = "√" + curr_value;
 		current.display_length = val.length;
 		current.sign = "+";
 		current.deleteD1 = undefined;
-		current.nextVal = undefined
+		current.nextVal = undefined;
 	}
 	current.lastKey = "s";
 	document.getElementsByClassName("s")[0].setAttribute("id", "buttonClicked");
