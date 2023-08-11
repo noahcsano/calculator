@@ -425,6 +425,28 @@ a:link {
 	text-decoration: none;
   }
 
-  #hideStuff{
-	  display: none  !important;
-  }
+.dcg-left-buttons{
+	display: none  !important;
+}
+.dcg-action-toggle-edit{
+	display: none  !important;
+}
+.dcg-center-buttons{
+	display: none  !important;
+}
+.dcg-overgraph-icon-container.dcg-bottom-right{
+	right: auto !important;
+	padding-left: 5px;
+}
+.dcg-icon-desmos {
+	display: none  !important;
+}
+.dcg-powered-by{
+	display: none  !important;
+}
+.dcg-expressions-branding {
+	display: none  !important;
+}
+
+
+/* .dcg-calculator-api-container .dcg-exppanel-outer .dcg-exppanel-container.dcg-add-shadow */
