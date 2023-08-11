@@ -24,9 +24,9 @@
             </div>
         </div>
     </div>
-
+    <iframe style="width: 100%;height: 100%;" src="graphing.html" frameborder="0"></iframe>
     <!--  Container -->
-    <div class="container vertical-center">
+    <div class="calculator container vertical-center">
         <div class = "fw"> 
             <div class = "row">
                 <div id = "display" class="row" style="height: 300px;">
@@ -124,7 +124,7 @@
                                 <h3><button onclick = "off()" class="q non_numbs">Off</button></h3>
                             </div>
                             <div class="nbtn col col-m-3 col-t-3 col-d-3">
-                                <h3><button onclick = "graph()" class="G non_numbs">G</button></h3>
+                                <h3><button class="g non_numbs"><a class="non_numbs" href="graphing.html" style="text-decoration: none;">G</a></button></h3>
                             </div>
                             <div class="nbtn col col-m-3 col-t-3 col-d-3">
                                 <h3><button onclick = "sqrt()" class="s non_numbs">√</button></h3>
@@ -175,14 +175,12 @@
                     </div> -->
             </div>
         </div>
-        <div class="by">
-            <h4 style="margin-top: 15px; margin-bottom: 0;">@Developed By Noah Sano</h4>
-        </div>
     </div>
     <script src = "jquery.min.js"></script>
     <script src = "jquery.validate.js"></script>
     <script src="keys.js"></script>
     <script src="calc.js"></script>
+    <script src = "graphing.js"></script>
     
 </body>
 </html>

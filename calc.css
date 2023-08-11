@@ -148,3 +148,21 @@ transform: translateY(4px);
     border-color: white;
     
 }
+
+/* Iframe Turn On Calculator*/
+#frame{
+    opacity: 100% !important;
+    position: absolute !important;
+    z-index: 1 !important;
+}
+#main{
+    opacity: 0% !important;
+    z-index: 0 !important;
+}
+
+/* Default iframe set up hidden*/
+iframe{
+    position: absolute;
+    z-index: 0;
+    opacity: 0% !important;
+}

@@ -47,8 +47,11 @@ document.addEventListener("keydown", function(event) {
         sqrt();
     } else if (event.key == "q") { 
         off();
-    } else{
+    } else if (event.key == "g") { 
+        window.location.href = "graphing.html";
         return;
+    } else {
+        return; 
     }
     current.lastKey = event.key;
     document.getElementsByClassName(`${event.key}`)[0].setAttribute("id", "buttonClicked");

@@ -360,7 +360,11 @@ function sqrt(){
 	}
 	current.lastKey = "s";
 	document.getElementsByClassName("s")[0].setAttribute("id", "buttonClicked");
-
-	
 }
+
+function G()  {
+	document.getElementsByTagName("iframe")[0].setAttribute("id", "frame");
+    document.getElementsByClassName("calculator")[0].setAttribute("id", "main");
+}
+
 var current = class Active {};
