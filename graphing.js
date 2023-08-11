@@ -1,6 +1,6 @@
 //Get container for graph
 var container = document.getElementById('desmos');
-var calculator = Desmos.GraphingCalculator(container, {keypad: false, expressions: false, settingsMenu: false});
+var calculator = Desmos.GraphingCalculator(container, {keypad: false, expressions: false, settingsMenu: false, invertedColors: true});
 // Event listener for graph button
 var enter = document.getElementById('enter');
 var equation = document.getElementById('equation');
@@ -28,4 +28,3 @@ document.addEventListener("keydown", function(event) {
         window.location.href = "index.html";
     }
 });
-
