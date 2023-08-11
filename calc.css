@@ -20,10 +20,7 @@ h3 {
         line-height: 55px;
         margin: 0, auto;
     }
-    #buttonClicked{
-        transform: translateY(1px) !important;
-        border-width: 1px !important;
-    }
+
     #display {
         padding-right: 15px ;    
         
