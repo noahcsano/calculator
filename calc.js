@@ -256,7 +256,7 @@ function decimal() {
 function Delete() {
 	var curr_display = document.getElementById("curr_dis");
 	var curr_value = curr_display.textContent;
-	if (curr_value === 'Start' || curr_value == "0") {
+	if (curr_value === 'Start' || curr_value == "0" || current.deleteD1 == true) {
 		return;
 	} 
 	// if (current.lastKey != undefined) {
@@ -272,6 +272,9 @@ function Delete() {
 		document.getElementById("last_display1").textContent = document.getElementById("last_display1").textContent.slice(0, - 1);
 		current.nextVal = current.nextVal.toString().slice(0, -1);
 		current.display_length -= 1;
+		if (current.nextVal == "") {
+			current.nextVal = undefined;
+		}
 	} else {
 		curr_display.textContent = curr_display.textContent.slice(0, - 1);
 		document.getElementById("last_display1").textContent = document.getElementById("last_display1").textContent.slice(0, - 1);
@@ -279,7 +282,6 @@ function Delete() {
 	}
 	if (curr_value.length == 1) {
 		curr_display.textContent = '0';
-		display_curr_calc(curr_display.textContent);
 		current.display_length = 1;
 	}
 	// current.lastKey = "Backspace";
