@@ -365,8 +365,13 @@ function sqrt(){
 }
 
 function G()  {
-	document.getElementsByTagName("iframe")[0].setAttribute("id", "frame");
-    document.getElementsByClassName("calculator")[0].setAttribute("id", "main");
+	document.getElementsByClassName("calculator")[0].setAttribute("id", "erase");
+	document.getElementsByClassName("Graphing")[0].removeAttribute("id", "show");
+}
+function return_to_calc(){
+	document.getElementsByClassName("Graphing")[0].removeAttribute("id", "show");
+	document.getElementsByClassName("Graphing")[0].setAttribute("id", "erase");
+	document.getElementsByClassName("calculator")[0].removeAttribute("id", "erase");
 }
 
 var current = class Active {};

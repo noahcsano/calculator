@@ -98,6 +98,7 @@ body {
 		line-height: 40px !important;
 	}
 
+
 }
 .container {
 	width: 23%;
@@ -138,6 +139,7 @@ body {
 	.container{
 		width: 40%;
 	}
+	
 }
 /* 3. Columns */
 .row {

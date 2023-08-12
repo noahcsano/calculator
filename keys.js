@@ -56,3 +56,8 @@ document.addEventListener("keydown", function(event) {
     current.lastKey = event.key;
     document.getElementsByClassName(`${event.key}`)[0].setAttribute("id", "buttonClicked");
 });
+
+
+//Get container for graph
+var container = document.getElementById('desmos');
+var calculator = Desmos.GraphingCalculator(container, {expressionsCollapsed: true, keypad: false, settingsMenu: false, invertedColors: true});
