@@ -289,7 +289,7 @@ function Delete() {
 
 
 function display_curr_calc(val) {
-	if (document.getElementById("last_display1").textContent == "0" || document.getElementById("last_display1").textContent == ""){
+	if (document.getElementById("last_display1").textContent == ""){
 		document.getElementById("last_display1").textContent = val;
 	} else{
 		document.getElementById("last_display1").textContent += val;
