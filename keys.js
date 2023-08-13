@@ -1,3 +1,4 @@
+var currently_graph = false;
 document.addEventListener("keydown", function(event) {
     if (current.lastKey != undefined) {
         document.getElementsByClassName(current.lastKey)[0].removeAttribute("id", "buttonClicked");
@@ -48,11 +49,15 @@ document.addEventListener("keydown", function(event) {
     } else if (event.key == "q") { 
         off();
     } else if (event.key == "g") { 
-        window.location.href = "graphing.html";
+        G();
+        return;
+    } else if (event.key == "r" && currently_graph == true) { 
+        return_to_calc();
         return;
     } else {
         return; 
     }
+    
     current.lastKey = event.key;
     document.getElementsByClassName(`${event.key}`)[0].setAttribute("id", "buttonClicked");
 });
@@ -61,3 +66,4 @@ document.addEventListener("keydown", function(event) {
 //Get container for graph
 var container = document.getElementById('desmos');
 var calculator = Desmos.GraphingCalculator(container, {expressionsCollapsed: true, keypad: false, settingsMenu: false, invertedColors: true});
+

@@ -367,11 +367,13 @@ function sqrt(){
 function G()  {
 	document.getElementsByClassName("calculator")[0].setAttribute("id", "erase");
 	document.getElementsByClassName("Graphing")[0].removeAttribute("id", "show");
+	currently_graph = true;
 }
 function return_to_calc(){
 	document.getElementsByClassName("Graphing")[0].removeAttribute("id", "show");
 	document.getElementsByClassName("Graphing")[0].setAttribute("id", "erase");
 	document.getElementsByClassName("calculator")[0].removeAttribute("id", "erase");
+	currently_graph = false;
 }
 
 var current = class Active {};

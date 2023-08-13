@@ -115,7 +115,7 @@ body {
 	border-radius: 5%;
 	background-color: black;
 	position: relative;
-	animation-duration: 2s;
+	animation-duration: 1s;
 }
 /* Graph animation */
 .Graphing{
@@ -129,20 +129,21 @@ body {
 	animation-name: graphout;
 }
 .calculatorOut{
-	animation-name: graphin;
+	animation-name: calcout;
 }
 @keyframes graphin {
-  0%  {bottom: 500px;}
-  100%   {bottom: 0px;}
+  0%  {right: 400px;}
+  100%   {right: 0px;}
 }
 
 @keyframes calcin {
-	0%  {top: 500px;}
-	100%   {top: 0px;}
+	0%  {right: 400px;}
+	100%   {right: 0px;}
 }
 
 @keyframes calcout {
-
+	0%  {right: 0x;}
+	100%   {right: 600px;}
 }
 
 @keyframes graphout {
