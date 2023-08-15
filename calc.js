@@ -130,7 +130,6 @@ function add_to_display(i) {
 		document.getElementById("last_display1").textContent = i;
 		current.display_length = 1;
 		current.sign = "+";
-		current.deleteD1 = undefined;
 		current.nextVal = undefined
 	} else { //Case where you just continue displaying. At the start of Calc
 		var concat = curr_value + i;
@@ -138,6 +137,7 @@ function add_to_display(i) {
 		display_curr_calc(i);
 		current.display_length += 1;
 	} 
+	current.deleteD1 = undefined;
 	current.lastKey = i;
 	document.getElementsByClassName(i)[0].setAttribute("id", "buttonClicked");
 };
@@ -177,7 +177,7 @@ function OP(type) { //Initial Function Called when operation buttons are pressed
     }
 	if (current.oppActive === true && current.nextVal != undefined)  { //If there is a pending calculation to be completed, do it and update
 		finishCalc(); //Helper Function for above
-	} else if (current.oppActive === true && current.nextVal == undefined) {
+	} else if (current.oppActive === true && current.nextVal == undefined) { // Case where you are changing operations: a + b (* -> +)
 		current.operation = type;
 		document.getElementById("last_display1").textContent = current.total + ` ${type} `;
 		current.lastKey = type;
@@ -196,6 +196,7 @@ function OP(type) { //Initial Function Called when operation buttons are pressed
 	current.lastKey = type;
 	document.getElementsByClassName(type)[0].setAttribute("id", "buttonClicked");
 };
+
 function operation(val, type) { //Handles Operations based on specified type in Finish Calculations
 	if (val == ".") {
 		val = "0";

@@ -67,3 +67,5 @@ document.addEventListener("keydown", function(event) {
 var container = document.getElementById('desmos');
 var calculator = Desmos.GraphingCalculator(container, {expressionsCollapsed: true, keypad: false, settingsMenu: false, invertedColors: true});
 
+
+
