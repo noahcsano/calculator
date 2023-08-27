@@ -1,5 +1,8 @@
 var currently_graph = false;
 document.addEventListener("keydown", function(event) {
+    if (currently_graph == true && event.key != "r" ){ //All buttons but r is blocked in graph mode
+        return;
+    }
     if (current.lastKey != undefined) {
         document.getElementsByClassName(current.lastKey)[0].removeAttribute("id", "buttonClicked");
     }
